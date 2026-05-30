@@ -6,29 +6,9 @@
   <title>Vincent Schomaker's Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    /* ── "The Silver Editorial" hook ──
-       This font is commercial (SilverStag Type Foundry). If you own it,
-       drop the .woff2 files into a /fonts folder next to this file using the
-       names below and they will be used automatically. Until then, the page
-       falls back to Bodoni Moda — a free editorial serif with a similar feel. */
-    @font-face {
-      font-family: 'The Silver Editorial';
-      src: url('fonts/TheSilverEditorial-Regular.woff2') format('woff2');
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
-    @font-face {
-      font-family: 'The Silver Editorial';
-      src: url('fonts/TheSilverEditorial-Bold.woff2') format('woff2');
-      font-weight: 700; font-style: normal; font-display: swap;
-    }
-    @font-face {
-      font-family: 'The Silver Editorial';
-      src: url('fonts/TheSilverEditorial-Italic.woff2') format('woff2');
-      font-weight: 400; font-style: italic; font-display: swap;
-    }
     :root {
       --clay:       #e8ddd0;
       --clay-light: #f2ebe1;
@@ -44,8 +24,8 @@
       --radius:     16px;
       /* San Francisco (Apple system) for body text */
       --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      /* Editorial serif for headings + name (Silver Editorial if present, else Bodoni Moda) */
-      --serif: "The Silver Editorial", "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+      /* Editorial serif for headings + name (Playfair Display — same as v5) */
+      --serif: "Playfair Display", "Didot", Georgia, serif;
       --nav-h: 64px;
     }
     html { scroll-behavior: smooth; scroll-padding-top: 76px; }
@@ -220,45 +200,64 @@
       -webkit-user-select: none; user-select: none;
     }
     #floatingName.ready { opacity: 1; }
+    #fnFirst, #fnLast { position: absolute; top: 0; left: 0; white-space: nowrap; display: block; }
     /* ══════════════════════════════════════
        HERO (combined with About)
     ══════════════════════════════════════ */
     #hero {
       min-height: 100vh;
-      padding: 44px 80px 60px;
+      padding: 0 80px;
       background: transparent; position: relative; overflow: hidden;
+      display: flex; align-items: center;
     }
-    /* Rule-of-thirds composition: name+tagline anchored on the upper-left third,
-       about-me anchored on the lower-right third. */
     .hero-inner {
       width: 100%; max-width: 1320px; margin: 0 auto;
-      min-height: calc(100vh - 104px);
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      column-gap: clamp(24px, 4vw, 72px);
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(48px, 6vw, 100px);
       align-items: center;
+      padding: 100px 0 80px;
     }
-    .hero-namewrap { grid-column: 1 / 3; grid-row: 1 / 3; align-self: center; }
-    .hero-about    { grid-column: 2 / 4; grid-row: 2 / 4; align-self: center; justify-self: end; max-width: 480px; position: relative; z-index: 1; }
+    /* Left: name + tagline, vertically centered */
+    .hero-namewrap {
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    /* Thin green accent bar above name */
+    .hero-namewrap::before {
+      content: '';
+      display: block;
+      width: 48px; height: 2px;
+      background: var(--green);
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    /* Right: about, vertically centered, separated by a subtle line */
+    .hero-about {
+      display: flex; flex-direction: column; justify-content: center;
+      padding-left: clamp(24px, 3vw, 56px);
+      border-left: 1px solid rgba(74,124,89,0.20);
+      position: relative; z-index: 1;
+    }
     .hero-name {
       font-family: var(--serif);
       font-weight: 700; font-style: normal;
-      font-size: clamp(1.85rem, 8.5vw, 7.6rem);
-      line-height: 1;
-      letter-spacing: -0.01em;
+      font-size: clamp(3.2rem, 8.5vw, 8.8rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
       color: transparent; /* visible copy is #floatingName; kept for layout + a11y */
-      white-space: nowrap;
+      white-space: normal;
       margin-bottom: 0;
     }
     .hero-tagline {
-      font-size: 1.08rem; font-weight: 400; line-height: 1.7;
-      color: var(--ink-mid); max-width: 440px;
-      margin-top: clamp(16px, 1.8vw, 26px); /* sits right under the name */
+      font-size: clamp(0.88rem, 1.2vw, 1.02rem); font-weight: 400; line-height: 1.75;
+      color: var(--ink-mid); max-width: 520px;
+      margin-top: clamp(16px, 2vw, 28px);
     }
-    .hero-about .section-label { margin-bottom: 12px; }
-    .hero-about .section-title { margin-bottom: 22px; font-size: clamp(1.7rem, 2.7vw, 2.4rem); }
-    .hero-about p { font-size: 1.02rem; line-height: 1.8; color: var(--ink-mid); }
+    .hero-about .section-label { margin-bottom: 14px; }
+    .hero-about .section-title { margin-bottom: 24px; font-size: clamp(1.5rem, 2.2vw, 2.1rem); }
+    .hero-about p { font-size: 0.97rem; line-height: 1.82; color: var(--ink-mid); }
     .hero-about p + p { margin-top: 16px; }
     .scroll-hint {
       position: absolute; bottom: 30px; left: 50%;
@@ -300,26 +299,21 @@
     .tile-wrapper:nth-child(2) { grid-column: 8 / span 5; grid-row: 1 / span 2; }
     .tile-wrapper:nth-child(3) { grid-column: 1 / span 5; grid-row: 3 / span 2; }
     .tile-wrapper:nth-child(4) { grid-column: 6 / span 7; grid-row: 3 / span 2; }
-    .tile-wrapper::before { content: ''; position: absolute; inset: 12px 8px -18px; border-radius: 24px; background: rgba(42,36,32,0.5); filter: blur(26px); opacity: 0; transform: translateY(8px) scaleX(0.9); transition: opacity 0.35s, transform 0.35s; z-index: 0; pointer-events: none; }
+    .tile-wrapper::before { content: ''; position: absolute; inset: 12px 8px -18px; border-radius: 24px; background: rgba(42,36,32,0.5); filter: blur(26px); opacity: 0; transform: translateY(8px) scaleX(0.9); transition: opacity 0.35s, transform 0.35s; z-index: 0; pointer-events: none; will-change: opacity, transform; }
     .tile-wrapper:hover::before { opacity: 0.4; transform: translateY(16px) scaleX(0.88); }
     /* Project tile — Apple liquid glass framing */
     .project-tile {
-      border-radius: 24px; overflow: hidden; position: relative; width: 100%; height: 100%; z-index: 1;
-      border: 1px solid rgba(255,255,255,0.40);
+      border-radius: 24px; overflow: hidden; clip-path: inset(0 round 24px); position: relative; width: 100%; height: 100%; z-index: 1;
       box-shadow:
         0 14px 40px rgba(42,36,32,0.16),
-        0 2px 6px rgba(42,36,32,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.55),
-        inset 0 0 0 1px rgba(255,255,255,0.07);
+        0 2px 6px rgba(42,36,32,0.10);
       transition: box-shadow 0.35s, transform 0.35s;
     }
     .tile-wrapper:hover .project-tile {
       transform: translateY(-3px);
       box-shadow:
         0 26px 60px rgba(42,36,32,0.22),
-        0 4px 12px rgba(42,36,32,0.12),
-        inset 0 1px 0 rgba(255,255,255,0.7),
-        inset 0 0 0 1px rgba(255,255,255,0.12);
+        0 4px 12px rgba(42,36,32,0.12);
     }
     /* persistent diagonal glass gloss */
     .project-tile::after {
@@ -327,9 +321,11 @@
       background: linear-gradient(132deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.08) 20%, transparent 44%, transparent 100%);
       mix-blend-mode: screen; opacity: 0.75;
     }
-    .tile-bg { position: absolute; inset: 0; background-size: cover; background-position: center; border-radius: inherit; filter: blur(0.4px) saturate(0.95) brightness(0.95); transition: filter 0.3s; will-change: transform; transform: scale(1.12); }
-    .tile-wrapper:hover .tile-bg { filter: blur(0px) saturate(1.05) brightness(1); }
-    .tile-edge-fade { position: absolute; inset: 0; z-index: 1; border-radius: inherit; background: linear-gradient(to right, rgba(232,221,208,0.30) 0%, transparent 15%, transparent 85%, rgba(232,221,208,0.30) 100%), linear-gradient(to bottom, rgba(232,221,208,0.18) 0%, transparent 15%, transparent 80%, rgba(232,221,208,0.34) 100%); pointer-events: none; }
+    /* inset:0, no transform — keeps the image inside the rounded clip (a scaled child escapes border-radius in Safari) */
+    .tile-bg { position: absolute; inset: 0; background-size: cover; background-position: center; border-radius: inherit; filter: saturate(0.95) brightness(0.95); transition: filter 0.3s; }
+    .tile-wrapper:hover .tile-bg { filter: saturate(1.05) brightness(1); }
+    /* edge-fade removed — it read as a light frame around each tile */
+    .tile-edge-fade { display: none; }
     .tile-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(42,36,32,0.18) 0%, rgba(42,36,32,0.62) 100%); border-radius: inherit; }
     .tile-sheen { position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.16) 18%, transparent 46%); pointer-events: none; transition: opacity 0.25s ease; opacity: 0; mix-blend-mode: screen; }
     .tile-wrapper:hover .tile-sheen { opacity: 1; }
@@ -397,10 +393,10 @@
        RESPONSIVE
     ══════════════════════════════════════ */
     @media (max-width: 900px) {
-      #hero { padding: 116px 32px 92px; }
-      /* collapse the rule-of-thirds grid into a clean stacked column */
-      .hero-inner { display: flex; flex-direction: column; justify-content: center; gap: 36px; min-height: calc(100vh - 208px); }
-      .hero-about { justify-self: start; max-width: 560px; }
+      #hero { padding: 0 32px; }
+      .hero-inner { grid-template-columns: 1fr; padding: 110px 0 80px; gap: 48px; }
+      .hero-namewrap::before { margin-bottom: 20px; }
+      .hero-about { border-left: none; border-top: 1px solid rgba(74,124,89,0.18); padding-left: 0; padding-top: 40px; }
       .hero-tagline { max-width: none; }
       section { padding: 76px 32px; }
       nav { padding: 10px 18px; }
@@ -460,16 +456,15 @@
   </ul>
 </nav>
 <!-- Floating name that morphs from hero into the nav pill -->
-<div id="floatingName" aria-hidden="true">Vincent Schomaker</div>
+<div id="floatingName" aria-hidden="true"><span id="fnFirst">Vincent&nbsp;</span><span id="fnLast">Schomaker</span></div>
 <!-- ═══ HERO (combined with About) ═══ -->
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-namewrap">
-      <h1 class="hero-name" id="heroName">Vincent Schomaker</h1>
+      <h1 class="hero-name" id="heroName">Vincent<br>Schomaker</h1>
       <p class="hero-tagline">Designing, manufacturing and optimising products through an interdisciplinary and multi-faceted background.</p>
     </div>
     <div class="hero-about" id="about">
-      <div class="section-label">About Me</div>
       <h2 class="section-title">The person behind<br>the projects.</h2>
       <p>I'm a junior at Northwestern University with a passion for the automotive industry. I enjoy multi-disciplinary work, and am adept at connecting economics and engineering to better justify decisions. Problem solving and adaptability underscore everything I do. Whether I'm working on commercial products or student projects, breaking down complex challenges into more manageable chunks allows me find more effective and performative solutions.</p>
       <p>Outside of the classroom, I enjoy traveling, skiing, long drives and tinkering with cars! I hope to use my expertise and broad skillset to innovate in the manufacturing industry!</p>
@@ -604,6 +599,7 @@
     const scrollHint = document.getElementById('scrollHint');
 
     let startLeft = 0, startDocTop = 0, startFontPx = 64;
+    let fnFirstW = 0;
     let endLeft = 0, endTop = 0, endFontPx = 17, endScale = 0.25;
     let pEnd = 520;
 
@@ -634,6 +630,9 @@
       measureEnd();
       endScale = endFontPx / startFontPx;
       floating.style.fontSize = startFontPx + 'px';
+      floating.style.transform = 'none';
+      void floating.offsetHeight;
+      fnFirstW = document.getElementById('fnFirst').getBoundingClientRect().width;
       pEnd = Math.min(window.innerHeight * 0.55, 560);
       update();
       floating.classList.add('ready');
@@ -668,6 +667,14 @@
       floating.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) scale(${s.toFixed(4)})`;
       // bold → regular as the name settles into the pill (variable font weight)
       floating.style.fontWeight = Math.round(700 + (400 - 700) * e);
+
+      // Smoothly slide 'Schomaker' from below 'Vincent' to inline beside it
+      // Smoothly move 'Schomaker' from below 'Vincent' (hero) to inline beside it (pill)
+      const fnLastEl = document.getElementById('fnLast');
+      const easedE = e * e * (3 - 2 * e); // smoothstep mirrors main morph
+      const lx = fnFirstW * easedE;          // 0 → fnFirstW  (slides right into place)
+      const ly = startFontPx * (1 - easedE); // startFontPx → 0  (slides up to same line)
+      fnLastEl.style.transform = `translate(${lx.toFixed(2)}px,${ly.toFixed(2)}px)`;
 
       // the glass pill catches the name in the second half of the morph
       const pill = Math.min(1, Math.max(0, (p - 0.42) / 0.58));
