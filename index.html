@@ -6,22 +6,18 @@
   <title>Vincent Schomaker's Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --clay:       #e8ddd0;
       --clay-light: #f2ebe1;
       --clay-dark:  #d4c5b0;
-      --clay-deep:  #c0ae96;
       --green:      #4a7c59;
       --green-light:#6a9e78;
       --green-pale: #d6e8dc;
       --ink:        #2a2420;
       --ink-mid:    #5a4e46;
-      --black:      #100d0a;
       --white:      #faf7f3;
-      --radius:     16px;
       /* San Francisco (Apple system) for body text */
       --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       /* Editorial serif for headings + name (Playfair Display — same as v5) */
@@ -51,11 +47,11 @@
     .bg-aurora-layer {
       position: absolute; inset: -25%;
       background: linear-gradient(135deg,
-        #cdebd0 0%,
-        #a5d6a7 24%,
-        #ffe2bb 54%,
-        #ffd2c0 80%,
-        #c9e8cb 100%
+        #d0e9d3 0%,
+        #aad2ac 24%,
+        #fae3c3 54%,
+        #f9d4c5 80%,
+        #cce6ce 100%
       );
       transform: translateZ(0);
       will-change: transform;
@@ -76,35 +72,35 @@
     .bg-aurora-blob-1 {
       width: 680px; height: 580px;
       top: -150px; left: -100px;
-      background: radial-gradient(circle, rgba(74,124,89,0.26) 0%, rgba(106,158,120,0.10) 55%, transparent 75%);
+      background: radial-gradient(circle, rgba(74,124,89,0.21) 0%, rgba(106,158,120,0.08) 55%, transparent 75%);
       animation: blobDrift1 26s ease-in-out infinite;
     }
     .bg-aurora-blob-2 {
       width: 620px; height: 520px;
       top: 20vh; right: -120px;
-      background: radial-gradient(circle, rgba(255,160,80,0.22) 0%, rgba(240,130,60,0.08) 55%, transparent 75%);
+      background: radial-gradient(circle, rgba(255,160,80,0.17) 0%, rgba(240,130,60,0.06) 55%, transparent 75%);
       animation: blobDrift2 32s ease-in-out infinite;
     }
     .bg-aurora-blob-3 {
       width: 540px; height: 500px;
       bottom: 6vh; left: 22%;
-      background: radial-gradient(circle, rgba(140,195,140,0.20) 0%, rgba(74,124,89,0.07) 55%, transparent 75%);
+      background: radial-gradient(circle, rgba(140,195,140,0.16) 0%, rgba(74,124,89,0.055) 55%, transparent 75%);
       animation: blobDrift3 36s ease-in-out infinite;
     }
     @keyframes blobDrift1 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      40%     { transform: translate(55px,75px) scale(1.07); }
-      70%     { transform: translate(-35px,40px) scale(0.96); }
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      40%     { transform: translate3d(55px,75px,0) scale(1.07); }
+      70%     { transform: translate3d(-35px,40px,0) scale(0.96); }
     }
     @keyframes blobDrift2 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      35%     { transform: translate(-65px,-45px) scale(1.09); }
-      65%     { transform: translate(45px,58px) scale(0.94); }
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      35%     { transform: translate3d(-65px,-45px,0) scale(1.09); }
+      65%     { transform: translate3d(45px,58px,0) scale(0.94); }
     }
     @keyframes blobDrift3 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      45%     { transform: translate(58px,-65px) scale(1.06); }
-      75%     { transform: translate(-48px,32px) scale(1.04); }
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      45%     { transform: translate3d(58px,-65px,0) scale(1.06); }
+      75%     { transform: translate3d(-48px,32px,0) scale(1.04); }
     }
     /* ══════════════════════════════════════
        NAV — Apple "liquid glass"
@@ -268,12 +264,10 @@
       transition: opacity 0.4s ease;
       opacity: 0.85;
     }
-    .scroll-hint svg { animation: scrollArrow 2.4s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+    .scroll-hint svg { animation: scrollArrow 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; will-change: transform; }
     @keyframes scrollArrow {
-      0%   { transform: translateY(0); }
-      45%  { transform: translateY(5px); }
-      80%  { transform: translateY(-1px); }
-      100% { transform: translateY(0); }
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50%      { transform: translate3d(0, 6px, 0); }
     }
     /* ══════════════════════════════════════
        SHARED SECTION
@@ -324,8 +318,6 @@
     /* inset:0, no transform — keeps the image inside the rounded clip (a scaled child escapes border-radius in Safari) */
     .tile-bg { position: absolute; inset: 0; background-size: cover; background-position: center; border-radius: inherit; filter: saturate(0.95) brightness(0.95); transition: filter 0.3s; }
     .tile-wrapper:hover .tile-bg { filter: saturate(1.05) brightness(1); }
-    /* edge-fade removed — it read as a light frame around each tile */
-    .tile-edge-fade { display: none; }
     .tile-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(42,36,32,0.18) 0%, rgba(42,36,32,0.62) 100%); border-radius: inherit; }
     .tile-sheen { position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.16) 18%, transparent 46%); pointer-events: none; transition: opacity 0.25s ease; opacity: 0; mix-blend-mode: screen; }
     .tile-wrapper:hover .tile-sheen { opacity: 1; }
@@ -477,12 +469,12 @@
 </section>
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects">
-  <h2 class="section-title">Projects.</h2>
+  <h2 class="section-title">Selected Projects.</h2>
   <div class="projects-grid">
-    <div class="tile-wrapper" onclick="openModal(0)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/injectionmoulding1.jpg');"></div><div class="tile-edge-fade"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Manufacturing</span><div class="tile-title">Injection Moulding</div><div class="tile-desc">Developing product, tooling and process</div></div></div></div>
-    <div class="tile-wrapper" onclick="openModal(1)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/fsae2.jpg');"></div><div class="tile-edge-fade"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Student Leadership</span><div class="tile-title">Formula SAE</div><div class="tile-desc">Formula Society of Automotive Engineers - Aerodynamics Subteam</div></div></div></div>
-    <div class="tile-wrapper" onclick="openModal(2)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/ingenics1.jpg');"></div><div class="tile-edge-fade"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Process Optimization</span><div class="tile-title">Ingenics Consulting</div><div class="tile-desc">Optimising production lines, layouts &amp; strategy</div></div></div></div>
-    <div class="tile-wrapper" onclick="openModal(3)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/ln11.jpg');"></div><div class="tile-edge-fade"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Engine Manufacturing</span><div class="tile-title">Adjustable Cylinder Scrubbing Tool</div><div class="tile-desc">First of its kind</div></div></div></div>
+    <div class="tile-wrapper" onclick="openModal(3)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/ln11.jpg');"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Engine Manufacturing</span><div class="tile-title">Adjustable Cylinder Scrubbing Tool</div><div class="tile-desc">First of its kind</div></div></div></div>
+    <div class="tile-wrapper" onclick="openModal(1)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/fsae2.jpg');"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Student Leadership</span><div class="tile-title">Formula SAE</div><div class="tile-desc">Formula Society of Automotive Engineers - Aerodynamics Subteam</div></div></div></div>
+    <div class="tile-wrapper" onclick="openModal(2)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/ingenics1.jpg');"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Process Optimization</span><div class="tile-title">Ingenics Consulting</div><div class="tile-desc">Optimising production lines, layouts &amp; strategy</div></div></div></div>
+    <div class="tile-wrapper" onclick="openModal(0)"><div class="project-tile"><div class="tile-bg" style="background-image:url('images/injectionmoulding1.jpg');"></div><div class="tile-overlay"></div><div class="tile-sheen"></div><div class="tile-content"><span class="tile-tag">Manufacturing</span><div class="tile-title">Injection Moulding</div><div class="tile-desc">Developing product, tooling and process</div></div></div></div>
   </div>
 </section>
 <!-- ═══ CONTACT ═══ -->
