@@ -462,12 +462,12 @@
   <div class="hero-inner">
     <div class="hero-namewrap">
       <h1 class="hero-name" id="heroName">Vincent<br>Schomaker</h1>
-      <p class="hero-tagline">Designing, manufacturing and optimising products and processes through an interdisciplinary and multi-faceted background.</p>
+      <p class="hero-tagline">Designing, manufacturing and optimising products and processes with an interdisciplinary background.</p>
     </div>
     <div class="hero-about" id="about">
       <h2 class="section-title">The person behind<br>the projects.</h2>
-      <p>I'm a rising senior at Northwestern University pursuing a combined BS/MS in Manufacturing and Design Engineering (BS) and MechE in Advanced Manufacturing (MS) and a minor in Economics with a passion for the automotive industry. I enjoy multi-disciplinary work, and am adept at connecting economics and engineering to better justify decisions. Problem solving and adaptability underscore everything I do. Whether I'm working on commercial products or student projects, breaking down complex challenges into more manageable chunks allows me find more effective and performative solutions.</p>
-      <p>Outside of the classroom, I enjoy traveling, skiing, long drives and tinkering with cars! I hope to use my expertise and broad skillset to innovate in the manufacturing industry!</p>
+      <p>I'm a rising senior at Northwestern University pursuing a combined BS/MS in MechE in Advanced Manufacturing (MS) Manufacturing and Design Engineering (BS) and a minor in Economics (BS) with a passion for the automotive industry. I enjoy multi-disciplinary work, and am adept at connecting economics and engineering to better justify decisions. Problem solving and adaptability underscore everything I do; whether I'm working on commercial products or student projects, breaking down complex challenges into more manageable chunks allows me find more effective and performative solutions.</p>
+      <p>Outside of the classroom, I enjoy traveling, skiing, long drives and tinkering with cars! I hope to innovate and contribute to the manufacturing industry!</p>
     </div>
   </div>
   <div class="scroll-hint" id="scrollHint">
@@ -531,13 +531,14 @@
       tag: "Manufacturing",
       title: "Injection Moulding",
       body: `
-        <p>With a shared passion for Formula 1, my team and I set out to recreate the generic toy cars we all played with as children — and to manufacture them ourselves. The project took us through the entire process, from designing the parts to the final injection moulding.</p>
+        <p>Tasked with the freedom to injection mould anything we wanted, my team and I's shared passion for Formula 1 racing led us to create a toy racecar. I had always wondered how the toys I played for endless hours were made, and this gave me a great opportunity to walk through the entire process, from designing the parts to final injection moulding!</p>
         <br>
         <h3>Modelling</h3>
-        <p>We modelled in Siemens NX following Design For Manufacturing (DFM) principles, keeping wall thickness uniform, adding a 2° draft and rounding all edges. The most consequential decision was the parting line: because we wanted to manufacture the wheels separately and attach them with a pin-hole interference fit, the line had to run through the middle of the mounting pins, as we had no access to side-action or inserts. We designed the rest of the car around it, meeting major horizontal surfaces at the line to ease ejection and hiding the gates at the end of each pin. The wheels were sized so the interference fit produced a design stress of half of polypropylene's yield stress.</p>
+        <p> We modelled everything in Siemens NX, following Design For Manufacturing (DFM) principles, keeping wall thickness uniform, adding a 2° draft and rounding all edges. Our most consequential decision was the parting line: Because we wanted to manufacture the wheels separately, mounting pins for the interference fit required the parting line to pass through them. The pins and wheels were sized such that the interference fit produced a design stress of half of polypropylene's yield stress. With this parting line, we optimised the rest of our design by meeting major horizontal surfaces at the line to ease ejection and hid the gates at the pins so they aren't visible on the final part.
+</p>
         <img src="images/injectionmoulding4.jpg" style="width:100%;max-height:420px;object-fit:contain;display:block;border-radius:12px;margin:20px 0;" />
         <h3>Computer Aided Manufacturing (CAM)</h3>
-        <p>Next we designed the toolpaths to machine the stock down into our four moulds. We used tools sized to the feature being cut — from 3/4" end mills for bulk removal to 1/16" for the car's intricate details — and varied operation types to minimise machining time while keeping a good finish on critical surfaces. Vents were added to let gases escape and prevent defects. Machining ran on Haas Super Mini Mills, taking around 6 hours in total.</p>
+        <p>Next, we designed the toolpaths to machine the stock down into our four moulds. We used tools sized to the feature being cut — from 3/4" end mills for bulk removal to 1/16" for the car's intricate details — and varied operation types to minimise machining time while resulting in a good finish on critical surfaces.Vents were added to let gases escape and prevent defects, and final machining, ran on Haas Super Mini Mills, took around 6 hours in total.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;">
           <img src="images/injectionmoulding5.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;" />
           <img src="images/injectionmoulding6.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;" />
@@ -545,7 +546,7 @@
           <img src="images/injectionmoulding8.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;" />
         </div>
         <h3>Manual Injection Moulding</h3>
-        <p>With the moulds mounted, our first runs at default parameters produced short shots; raising the melt temperature and injection time then introduced flash, so we iterated until the parameters gave consistent results. Despite inconsistent shot volumes from a faulty machine, we finished with 24 complete cars. A metrology study using calipers and a micrometer confirmed all parts ran about 1.5% smaller than the CAD — a shrinkage we had accounted for.</p>
+        <p>With the moulds mounted, our first runs at default parameters produced short shots; raising the melt temperature and injection time then introduced flash, so we iterated until the parameters gave consistent results. Despite inconsistent shot volumes from a faulty machine, we finished with 24 complete cars. A metrology study of the best 20 using calipers and a micrometer confirmed all parts ran about 1.5% smaller than the CAD — a shrinkage we had accounted for.</p>
         <img src="images/injectionmoulding9.jpg" style="width:100%;height:auto;display:block;border-radius:12px;margin:20px 0;" />
         <h3>Conclusion</h3>
         <p>We were happy with the outcome of our first attempt. Seeing the cars we designed in NX come out as tangible, functional parts was hugely rewarding. The main defect was warping along the longer, flatter sections, caused by irregular cooling: thicker regions held heat longer and the two halves contacted different amounts of plastic, producing uneven shrinkage. Next time we would add cooling channels and experiment with longer hold times. There is plenty to improve, but the project gave us a hands-on understanding of how design decisions ripple through every stage of manufacturing — and we left with a finished product and a great souvenir.</p>
